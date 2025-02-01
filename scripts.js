@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const messages = document.getElementById('messages');
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendButton');
-    const leaveButton = document.getElementById('leaveButton');
     let username = '';
 
     // Fonction pour ajouter un message
@@ -83,13 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.key === 'Enter') {
             sendMessage();
         }
-    });
-
-    leaveButton.addEventListener('click', () => {
-        if (window.eventSource) {
-            window.eventSource.close();
-        }
-        loginContainer.style.display = 'block';
-        chatContainer.style.display = 'none';
     });
 });
