@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const leaveButton = document.getElementById('leaveButton');
     let username = '';
 
-    // Fonction modifiée pour gérer différemment les messages système
+    // Fonction pour ajouter un message
     const appendMessage = (msg) => {
         const li = document.createElement('li');
         
@@ -17,16 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (msg.username === 'System') {
             li.style.fontStyle = 'italic';
             li.style.color = '#666';
-            li.textContent = msg.message; // Pour les messages système, on affiche directement le message
+            li.textContent = msg.message;
         } else {
-            li.textContent = `${msg.username}: ${msg.message}`; // Format normal pour les messages utilisateur
+            li.textContent = `${msg.username}: ${msg.message}`;
         }
         
         messages.appendChild(li);
-        messages.scrollTop = messages.scrollHeight;
+        messages.scrollTop = messages.scrollHeight; // Auto-scroll
     };
 
-    // Fonction pour récupérer les messages initiaux (uniquement les messages normaux)
+    // Fonction pour récupérer les messages initiaux
     const updateMessages = async () => {
         try {
             const response = await fetch('https://real-time-chat-supabase.onrender.com/get-messages');
@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Fonction pour envoyer un message
     const sendMessage = async () => {
         const message = messageInput.value.trim();
         if (message) {
@@ -85,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     leaveButton.addEventListener('click', () => {
-        // Fermer la connexion SSE avant de quitter
         if (window.eventSource) {
             window.eventSource.close();
         }

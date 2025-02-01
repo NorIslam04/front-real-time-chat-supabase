@@ -29,6 +29,10 @@ body {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .auth-container h1 {
@@ -39,7 +43,6 @@ body {
     align-items: center;
     gap: 0.5rem;
 }
-
 .chat-container {
     display: none;
     background: white;
@@ -49,6 +52,7 @@ body {
     height: calc(100vh - 20px);
     max-height: 800px;
     flex-direction: column;
+    position: relative;
 }
 
 .chat-header {
@@ -75,6 +79,7 @@ body {
     padding: clamp(0.5rem, 3vw, 1rem);
     list-style: none;
     background: #f8f9fa;
+    max-height: calc(100vh - 200px);
 }
 
 .messages-list li {
@@ -108,11 +113,10 @@ body {
 
 .input-group input {
     width: 100%;
-    padding: clamp(0.6rem, 2vw, 0.8rem) 1rem 
-           clamp(0.6rem, 2vw, 0.8rem) 2.5rem;
+    padding: clamp(0.6rem, 2vw, 0.8rem) 1rem clamp(0.6rem, 2vw, 0.8rem) 2.5rem;
     border: 1px solid #ced4da;
     border-radius: 8px;
-    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-size: 16px; /* Empêche le zoom automatique sur mobile */
     transition: border-color 0.2s;
 }
 
@@ -123,11 +127,15 @@ body {
     display: flex;
     gap: 0.5rem;
     border-radius: 0 0 12px 12px;
+    position: sticky;
+    bottom: 0;
+    background-color: white;
 }
 
 .message-input input {
     flex: 1;
     padding: clamp(0.6rem, 2vw, 0.8rem);
+    font-size: 16px; /* Empêche le zoom automatique sur mobile */
 }
 
 .btn-primary, .btn-danger {
@@ -175,6 +183,15 @@ body {
     .chat-container {
         height: 100vh;
         border-radius: 0;
+    }
+
+    .auth-container {
+        width: 90%;
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .chat-header i {
