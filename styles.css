@@ -195,7 +195,7 @@ body {
     }
 
     .chat-header i {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 
     .btn-primary, .btn-danger {
@@ -211,7 +211,7 @@ body {
     }
 
     .chat-header {
-        padding: 0.5rem;
+        padding: 1.2rem;
     }
 
     .message-input {
