@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fonction pour récupérer les messages initiaux
     const updateMessages = async () => {
+        const loadingMessage = document.getElementById('loading-message');
+        loadingMessage.style.display = 'block';
+    
         try {
             const response = await fetch('https://real-time-chat-supabase.onrender.com/get-messages');
             const messagesArray = await response.json();
@@ -35,12 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
             messagesArray.forEach(msg => appendMessage(msg));
         } catch (error) {
             console.error("❌ Erreur lors de la récupération des messages:", error);
+        } finally {
+            loadingMessage.style.display = 'none';
         }
     };
 
     // Gestion de la connexion
     loginButton.addEventListener('click', async () => {
-        username = usernameInput.value.trim();
+        username = usernameInput.value.trim();// Récupérer le nom d'utilisateur
         if (username) {
             loginContainer.style.display = 'none';
             chatContainer.style.display = 'block';

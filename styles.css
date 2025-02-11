@@ -166,6 +166,24 @@ body {
     padding: clamp(0.6rem, 2vw, 0.8rem);
 }
 
+.loading-message {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-style: italic;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
